@@ -26,6 +26,11 @@ let inputPressure = document.getElementById("PostPressure") as HTMLInputElement;
 let inputHumidity = document.getElementById("PostHumidity") as HTMLInputElement;
 let inputTemperature = document.getElementById("PostTemperature") as HTMLInputElement;
 
+let putId = document.getElementById("PutId") as HTMLTableCellElement;
+let putPressure = document.getElementById("PutPressure") as HTMLInputElement;
+let putHumidity = document.getElementById("PutHumidity") as HTMLInputElement;
+let putTemperature = document.getElementById("PutTemperature") as HTMLInputElement;
+
 let btnGetOne = document.getElementById("GetOne") as HTMLButtonElement;
 btnGetOne.addEventListener("click", GetOne);
 
@@ -36,6 +41,8 @@ let btnPutOne = document.getElementById("PutOne") as HTMLButtonElement;
 btnPutOne.addEventListener("click", PutOne);
 
 let tableBody = document.getElementById("tBodyContent") as HTMLTableElement;
+
+let putArea = document.getElementById("PutArea") as HTMLTableElement;
 
 function NumFormat(num: number, decimals: number): string
 {
@@ -52,11 +59,15 @@ function ClearTable(): void
     tableBody.innerText = "";
 }
 
-function ClearPostInput(): void
+function ClearInputs(): void
 {
     inputPressure.value = "";
     inputHumidity.value = "";
     inputTemperature.value = "";
+    putId.innerText = "";
+    putPressure.value = "";
+    putHumidity.value = "";
+    putTemperature.value = "";
 }
 
 function HTMLTableDataRow(obj?: Meassurement): HTMLTableRowElement
@@ -80,6 +91,17 @@ function HTMLTableDataRow(obj?: Meassurement): HTMLTableRowElement
         let cell5 = row.insertCell(-1) as HTMLTableCellElement;
         cell5.innerText = Dates.formatDate(obj.timeOfEntry);
         
+        let putBtn = document.createElement("button") as HTMLButtonElement;
+        putBtn.setAttribute("class", "btn btn-info btn-block");
+        putBtn.innerText = "Update This";
+        putBtn.addEventListener("click", function()
+        {
+            PreparePut(obj);
+        });
+
+        let cell6 = row.insertCell(-1) as HTMLTableCellElement;
+        cell6.appendChild(putBtn);
+
         let deleteBtn = document.createElement("button") as HTMLButtonElement;
         deleteBtn.setAttribute("class", "btn btn-danger btn-block");
         deleteBtn.innerText = "Delete This";
@@ -88,17 +110,26 @@ function HTMLTableDataRow(obj?: Meassurement): HTMLTableRowElement
             DeleteOne(obj.id);
         });
 
-        let cell6 = row.insertCell(-1) as HTMLTableCellElement;
-        cell6.appendChild(deleteBtn);
+        let cell7 = row.insertCell(-1) as HTMLTableCellElement;        
+        cell7.appendChild(deleteBtn);
     }
     else
     {
         let cell = row.appendChild(document.createElement("td") as HTMLTableCellElement);
-        cell.setAttribute("colspan", "6");
+        cell.setAttribute("colspan", "7");
         cell.innerText = "No records found.";
     }
 
     return row;
+}
+
+function PreparePut(obj: Meassurement): void
+{
+    putArea.setAttribute("style", "display: table;");
+    putId.innerText = obj.id.toString();
+    putPressure.value = obj.pressure.toString();
+    putHumidity.value = obj.humidity.toString();
+    putTemperature.value = obj.temperature.toString();
 }
 
 // HTTP Method: GET (Multiple)
@@ -155,7 +186,7 @@ async function PostOne(): Promise<any>
     })
     .then(function()
     {
-        ClearPostInput();
+        ClearInputs();
         GetAll();
     });
 }
@@ -163,14 +194,16 @@ async function PostOne(): Promise<any>
 // HTTP Method: PUT
 async function PutOne(): Promise<any>
 {
-    await axios.put(baseURI + "/" + inputId.value,
+    await axios.put(baseURI + "/" + putId.innerText,
     {
-        pressure: inputPressure.value,
-        humidity: inputHumidity.value,
-        temperature: inputTemperature.value
+        pressure: putPressure.value,
+        humidity: putHumidity.value,
+        temperature: putTemperature.value
     })
     .then(function()
     {
+        ClearInputs();
+        putArea.setAttribute("style", "display: none;");
         GetAll();
     });
 }
