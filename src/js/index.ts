@@ -52,6 +52,13 @@ function ClearTable(): void
     tableBody.innerText = "";
 }
 
+function ClearPostInput(): void
+{
+    inputPressure.value = "";
+    inputHumidity.value = "";
+    inputTemperature.value = "";
+}
+
 function HTMLTableDataRow(obj?: Meassurement): HTMLTableRowElement
 {
     let row = document.createElement("tr") as HTMLTableRowElement;
@@ -148,6 +155,7 @@ async function PostOne(): Promise<any>
     })
     .then(function()
     {
+        ClearPostInput();
         GetAll();
     });
 }

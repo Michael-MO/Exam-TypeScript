@@ -56,22 +56,40 @@
             </thead>
             <tbody id="tBodyContent">
             </tbody>
-            <tfoot id="tFootContent">
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button id="PutOne" class="btn btn-secondary btn-lg col-3">Put One</button>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col">
+          <h4>Post A New Record</h4>
+          <table class="table table-lg table-striped">
+            <thead>
+              <tr>
+                <th class="col-1">ID</th>
+                <th class="col-1">Pressure</th>
+                <th class="col-1">Humidity</th>
+                <th class="col-9">Temperature</th>
+              </tr>
+            </thead>
+            <tbody>
               <tr>
                 <td></td>
                 <td><input id="PostPressure" class="form-control"></td>
                 <td><input id="PostHumidity" class="form-control"></td>
-                <td><input id="PostTemperature" class="form-control"></td>
-                <td colspan=2></td>
+                <td><input id="PostTemperature" class="form-control col-1"></td>
               </tr>
-            </tfoot>
+            </tbody>
           </table>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <button id="PostOne" class="btn btn-success btn-lg col-3">Post One</button>
-          <button id="PutOne" class="btn btn-secondary btn-lg col-3">Put One</button>
         </div>
       </div>
     </div>
