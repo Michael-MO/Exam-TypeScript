@@ -50,7 +50,8 @@
                 <th class="col-1">Pressure</th>
                 <th class="col-1">Humidity</th>
                 <th class="col-1">Temperature</th>
-                <th class="col-6">Timestamp</th>
+                <th class="col-4">Timestamp</th>
+                <th class="col-2"></th>
                 <th class="col-2"></th>
               </tr>
             </thead>
@@ -59,9 +60,30 @@
           </table>
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-5">
         <div class="col">
-          <button id="PutOne" class="btn btn-secondary btn-lg col-3">Put One</button>
+          <table id="PutArea" class="table table-lg table-striped">
+            <thead>
+              <tr>
+                <th class="col-1">ID</th>
+                <th class="col-1">Pressure</th>
+                <th class="col-1">Humidity</th>
+                <th class="col-1">Temperature</th>
+                <th class="col-6"></th>
+                <th class="col-2"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="PutId"></td>
+                <td><input id="PutPressure" class="form-control"></td>
+                <td><input id="PutHumidity" class="form-control"></td>
+                <td><input id="PutTemperature" class="form-control"></td>
+                <td></td>
+                <td><button id="PutOne" class="btn btn-success btn-block">Save</button></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <hr />
@@ -74,7 +96,8 @@
                 <th class="col-1">ID</th>
                 <th class="col-1">Pressure</th>
                 <th class="col-1">Humidity</th>
-                <th class="col-9">Temperature</th>
+                <th class="col-1">Temperature</th>
+                <th class="col-8"></th>
               </tr>
             </thead>
             <tbody>
@@ -82,7 +105,8 @@
                 <td></td>
                 <td><input id="PostPressure" class="form-control"></td>
                 <td><input id="PostHumidity" class="form-control"></td>
-                <td><input id="PostTemperature" class="form-control col-1"></td>
+                <td><input id="PostTemperature" class="form-control"></td>
+                <td></td>
               </tr>
             </tbody>
           </table>
