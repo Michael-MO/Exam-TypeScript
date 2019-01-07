@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://fonts.googleapis.com/css?family=Signika+Negative:400,700');
+
+$defaultFont: 'Signika Negative', sans-serif;
+$defaultColor: #454545;
+$defualtFontSize: 1.1rem;
+
+body {
+    font-family: $defaultFont;
+    color: $defaultColor;
+    margin: 30px;
+    background-color: #eee;
+    font-size: $defualtFontSize;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+button.btn, a.btn {
+    text-transform: uppercase;
+    font-weight: bold;
+}
