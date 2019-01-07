@@ -40,8 +40,8 @@ let tableBody = document.getElementById("tBodyContent") as HTMLTableElement;
 function NumFormat(num: number, decimals: number): string
 {
     return (num
-        .toFixed(decimals) // Set the number of desired decimals
-        .replace('.', ',')  // Replace all points with commas
+        .toFixed(decimals)
+        .replace('.', ',')
         .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') // Then put a point for every thousand in the number
     )
 }
@@ -137,7 +137,6 @@ async function GetOne(): Promise<any>
     });
 }
 
-// Unfinished: Missing API Method
 // HTTP Method: POST
 async function PostOne(): Promise<any>
 {
@@ -153,7 +152,6 @@ async function PostOne(): Promise<any>
     });
 }
 
-// Unfinished: Missing API Method
 // HTTP Method: PUT
 async function PutOne(): Promise<any>
 {
