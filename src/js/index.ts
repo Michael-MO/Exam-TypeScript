@@ -41,7 +41,6 @@ let btnPutOne = document.getElementById("PutOne") as HTMLButtonElement;
 btnPutOne.addEventListener("click", PutOne);
 
 let tableBody = document.getElementById("tBodyContent") as HTMLTableElement;
-
 let putArea = document.getElementById("PutArea") as HTMLTableElement;
 
 function NumFormat(num: number, decimals: number): string
@@ -125,7 +124,7 @@ function HTMLTableDataRow(obj?: Meassurement): HTMLTableRowElement
 
 function PreparePut(obj: Meassurement): void
 {
-    putArea.setAttribute("style", "display: table;");
+    putArea.style.display = "table";
     putId.innerText = obj.id.toString();
     putPressure.value = obj.pressure.toString();
     putHumidity.value = obj.humidity.toString();
@@ -203,7 +202,7 @@ async function PutOne(): Promise<any>
     .then(function()
     {
         ClearInputs();
-        putArea.setAttribute("style", "display: none;");
+        putArea.style.display = "none";
         GetAll();
     });
 }
